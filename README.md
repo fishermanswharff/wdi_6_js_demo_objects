@@ -439,32 +439,47 @@ __Create a file lib/object_create.js with the below code and reference it from i
 ```
 // Define a person
 var person = {
-	kind: 'person',
+    numOfLegs: 2,
+    canSpeak: true,
+    said: function(msg){
+       return this.name + " said \"" + msg + "\" when he/she turned " + this.age;
+    }
 };
 
-var sue = Object.create(person, {name: "Susan", age: 34 });
-console.log(sue.kind); // person
-console.log(sue.name); // 'Susan'
-console.log(sue.age); // 34
+debugger;
+var sue = Object.create(person, {name: {value: "Susan"}, age: {value: '34'} });
+console.log(sue.name + " has " + sue.numOfLegs + " legs ");
+console.log(sue.said('oh no!!!'));
 
 // Look at sue in chrome inspector
-// see how sue is an instance of Object
-// it's __proto__ points to person.
-console.log(sue.__proto__);   // person "defined above"
+console.log(sue.__proto__);  // person object literal defined above
+
 console.log(sue.hasOwnProperty('name')); // true
+console.log(sue.__proto__.hasOwnProperty('name')); // false
 
-var bob  = Object.create(person, {name: "Bobby", age: 26});
-console.log(bob.kind); // person
-console.log(bob.name); // 'Bobby'
-console.log(bob.age); // 26
-
+console.log(sue.hasOwnProperty('numOfLegs')); // false
+console.log(sue.__proto__.hasOwnProperty('numOfLegs')); // true
 
 ```
 
-## LAB
-Watch [Object Playground](http://www.objectplayground.com/)
 
+### References
+* [MDN Object Oriented Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript)
 
+* __Zakas, Nicholas C. (2011-12-20). Professional JavaScript for Web Developers__  
+Chapter 6.  
+	* The Factory Pattern.  
+	* The Constructor Pattern  
+	* Constructors as Functions  
+	* The Prototype Pattern  
+	* How Prototypes Work  
+	* Alternative Prototype Syntax  
+	* Dynamic Nature of Prototypes 
+	* Problems with Prototypes  
+	* Combination Constructor/ Prototype Pattern  
+
+* [Object Playground](http://www.objectplayground.com/)
+* [The Four Layers of Javascript OOP](https://www.youtube.com/watch?v=VJOTcUsD2kA&app=desktop)
 
 ## Summary.
 
