@@ -209,12 +209,15 @@ Each object will have an internal ``__proto__`` property that can point to anoth
 
 An object's ``__proto__`` pointer will be used to lookup properties, _(values and methods)_. 
 
-For the example below:  
+![Object Literal Prototype](images/object_literal_prototype.svg)  
+
+For the example above:  
 * When one calls person.toString().  
 * js will look for the property toString in the person object literal.  
 * It will __not__ be found.  
 * js will look for the property to toString in the object pointed to by ``person.__proto__``. This is Object.prototype.  
 * js will find the toString method on Object.prototype and execute it.  
+
 
 
 By setting this ``__proto_`` property we can _simulate_ object inheritance.
@@ -255,6 +258,9 @@ joe.__proto__ = person;
 // __proto___ property. 
 console.log(joe.sayHi("hey there"));
 ```
+
+
+![Object Literal Inheritance](images/object_literal_inherit.svg)  
 
 ### Use Object Literals for objects that are only created once.
 
