@@ -209,7 +209,7 @@ Each object will have an internal ``__proto__`` property that can point to anoth
 
 An object's ``__proto__`` pointer will be used to lookup properties, _(values and methods)_. 
 
-![Object Literal Prototype](images/object_literal_prototype.svg)  
+![Object Literal Prototype](images/object_literal_prototype.png)  
 
 For the example above:  
 * When one calls person.toString().  
@@ -260,7 +260,7 @@ console.log(joe.sayHi("hey there"));
 ```
 
 
-![Object Literal Inheritance](images/object_literal_inherit.svg)  
+![Object Literal Inheritance](images/object_literal_inherit.png)  
 
 ### Use Object Literals for objects that are only created once.
 
