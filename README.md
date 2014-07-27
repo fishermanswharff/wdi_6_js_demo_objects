@@ -260,7 +260,14 @@ console.log(joe.sayHi("hey there"));
 ```
 
 
-![Object Literal Inheritance](images/object_literal_inherit.png)  
+![Object Literal Inheritance](images/object_literal_inherit.png) 
+
+For the example above:  
+* When one calls joe.sayHi("hey there").  
+* js will look for the property sayHi in the joe object literal.  
+* It will not be found.  
+* js will look for the property sayHi in the object pointed to by ``joe.__proto__``. This is the person object.  
+* js will find the sayHi method on the person object and execute it. 
 
 ### Use Object Literals for objects that are only created once.
 
@@ -418,94 +425,56 @@ __Create a file js/constructor_function.js with the below code and reference it 
 
 
 ```
-// Constructor Function object creation
-
-// Constructor function is camel cased by convention.  
-var Person = function(name, age){
-	this.name = name;
-	this.age = age;
-};
-
-// Define all the methods for Person in an object literal.
-// A little faster than above, defining them individually.
-Person.prototype = {
-   describe: function(){
-	return this.name + " is " + this.age + " years old";
-   }
-};
-
-var joe = new Person('joe', 23), 
-  jill = new Person('jill', 32);
-
-console.log(joe.describe());
-console.log(jill.describe());
-```
-
-##### Property Lookup and the Prototype.  
-
-Whats happening when we call _new_ on a Constructor function? Heres some detailed info on what javascript is doing. _Same code as above with javascript implementation notes._
-
-
-```
 debugger;
 
 // Constructor Function object creation
 // Constructor function is camel cased by convention. 
 var Person = function(name, age){
-  // 4. Create a new object literal
-  //  {}
-
-  // 5. Set 'this' to point to this new object literal. 
-  //  this = {};
-
-  // 6. Set the new object literal's internal __proto__ pointer 
-  //    to point to the same object created in Step 2.
-  //   this.__proto__ = Person.prototype
+  // When new Person(...) is invoked
+  // this = {};
+  // this.__proto_ = Person.prototype
   debugger;
+
   this.name = name;
   this.age = age;
-  // 7. Execute the body of this Constructor Function, Person.
-
-  // 8. Return the this pointer
+  
+  // return the this pointer
   // return this;
 };
-
-// 1.0 Defined a Constructor Function.
-// 1.1 A global variable Person is set to this Constructor Function.
-// 1.2 A new object literal, {}, is created and pointed to by 
-// the Person prototype property. 
-//  Person.prototype = {};
 
 Person.prototype = {
    describe: function(){
     return this.name + " is " + this.age + " years old";
    }
 };
-// 2. Replace the object literal pointed to by the Person 
-// prototype property. 
-// 2.1 Define a method, describe, on the Person.property.
-// This will allow all instances of a Person to use the describe method.
 
-// 3. Invoke the Constructor Function to create two instances.
 var joe = new Person('joe', 23), 
   jill = new Person('jill', 32);
 
-// 9. Now the joe and jill variables will be pointing to 
-// the this pointers returned from Person Constructor Function.
-
 console.log(joe.describe());
-// Property/Method Lookup
-// 10. Look in the joe object for the property/method describe. Not found.
-// 11. Look in the object pointed to by joe's __proto__ pointer. Found.
-// 12. Invoke the describe method and set the this pointer for the method 
-// to be the joe object.
-
 console.log(jill.describe());
-// Same as above
-
 ```
 
-__Run the above code and look at the Person.prototype and object __proto__ properties.__
+__BIG NOTE:__ The _``__proto__``_ property is NOT the same as the _``prototype``_ property.   
+The ``__proto__ `` property is __ONLY__ used for object property lookup.  
+The ``Function.prototype`` property will only exist for functions.  
+
+##### Property Lookup and the Prototype.  
+
+Whats happening when we call joe.describe().  
+
+For the example above:  
+* When one calls joe.describe();  
+* js will look for the property describe in the joe object literal.  
+* It will not be found.  
+* js will look for the property describe in the object pointed to by ``joe.__proto__``. This is the Person.prototype object.  
+* js will find the describe method on the Person.prototype object and execute it. 
+
+
+![Constructor function](images/constructor_function1.png) 
+
+
+__Run the above code and look at the Person.prototype and object ``__proto__``  properties.__
 
 
 ## LAB
