@@ -23,7 +23,7 @@ But, it does provide a way to create structures that behave like classes. We'll 
 
 #### Two Ways to create a new Object
 
-_lib/new_object.js_
+_js/new_object.js_
 
 ```
 // Using a Object constructor
@@ -35,7 +35,7 @@ var newObject = {};
 
 #### Four ways that properties can be added.
 
-_lib/object_properties.js_
+_js/object_properties.js_
 
 
 ```
@@ -78,7 +78,7 @@ Object.defineProperties( newObject, {
 And Object literal is the simplest way to create an object in javacript. It looks and behaves somewhat like a Ruby hash but has some key differences.
 
 
-__Create a file lib/simple.js with the below code and reference it from index.html.__
+__Create a file js/simple.js with the below code and reference it from index.html.__
 
 ```
 // Create an Object literal representing one person.
@@ -108,7 +108,7 @@ console.log("Hey " + joe.name + " are you really " + joe['age'] + " years old?")
 
 An Object Literal:
 
-* Has properties.
+* Has properties.js/
 * Each property has a name and a value, name/value pairs.
 * A property is typically a string, but can be it can be a number _(rare)_.
 * A value can be a __Primitive__ or an __Object__, aka reference type.
@@ -123,7 +123,7 @@ __Inspect joe and jill in Chrome.__
 
 Object literals can have properties that are objects.
 
-__Create a file lib/simple_address.js with the below code and reference it from index.html.__
+__Create a file js/simple_address.js with the below code and reference it from index.html.__
 
 ```
 var jill = {
@@ -180,7 +180,7 @@ __Inspect joe and jill in Chrome.__
 Here we are pointing the the joe object literal's describe property at another function.
 
 
-__Append the below code to lib/simple_address.js.__
+__Append the below code to js/simple_address.js.__
 
 ```
 // Can change the describe function later, at runtime.
@@ -211,7 +211,7 @@ This is used to lookup a property or method on an object.
 
 By setting this property we can _simulate_ object inheritences.
 
-___Create a file lib/simple_prototype.js with the below code and reference it from index.html.__
+___Create a file js/simple_prototype.js with the below code and reference it from index.html.__
 
 ```
 var person = {
@@ -283,18 +283,18 @@ Implement "Honest Tom's Used Car Lot" using object literals. __Do all your work 
 
 _The cars_object_literal_done branch has a completed version of this lab if you get stuck_.
 
-* Create a couple addresses in lib/addresses.js. 
+* Create a couple addresses in js/addresses.js. 
 	* Properties are street, city, state and country.  
 	* Methods are display. This returns a string.  	 
-* Create a couple of car makers in lib/makers.js  
+* Create a couple of car makers in js/makers.js  
 	* Properties are name, established date and address (use one of the addresses created above for this property).  
 	* Methods are display. This returns a string.  
 
-* Create a couple of cars in lib/cars.js 
+* Create a couple of cars in js/cars.js 
 	* Properties are model, year, price and make (use one of the makes created above for this property).  
 	* Methods are display. This returns a string.  
 
-* Create One car lot in lib/car_lot.js 
+* Create One car lot in js/car_lot.js 
 	* Properties are name and an array of cars.
 	* Methods are:
 		* addCar(car). This will add a car to the lot.
@@ -310,10 +310,10 @@ _Note: you will have to create a cars.html that will use each of the above js fi
  ...
  <body>
       <h3>Car Lot</h3>
-      <script src='lib/addresses.js'> </script>
-      <script src='lib/makers.js'> </script>
-      <script src='lib/cars.js'> </script>
-      <script src='lib/car_lot.js'> </script>
+      <script src='js/addresses.js'> </script>
+      <script src='js/makers.js'> </script>
+      <script src='js/cars.js'> </script>
+      <script src='js/car_lot.js'> </script>
   </body>
  ... 
 ```
@@ -338,7 +338,7 @@ Let's look at some ways we can create Objects.
 
 The Factory Pattern will use a function to create object literals. The arguments to the factory function will be used to initialize and set the object being created. 
   
-__Create a file lib/object_factory.js with the below code and reference it from index.html.__
+__Create a file js/object_factory.js with the below code and reference it from index.html.__
 
 
 ```
@@ -384,7 +384,7 @@ This is the most common way to create objects in Javascript. It's the most commo
 Many environments, including browsers, are optimized to use this kind of constructor. The *convention* is to uppercase the first name of a function that will be used as a constructor.
 
 
-__Create a file lib/constructor_function.js with the below code and reference it from index.html.__
+__Create a file js/constructor_function.js with the below code and reference it from index.html.__
 
 
 ```
@@ -487,7 +487,7 @@ ECMAScript 5 defined a new way to create an object. Object.create(...).
 
 You will be seeing this more as time goes on and developers make use of this. For now, we will be using the Constructor Function to create objects.
 
-__Create a file lib/object_create.js with the below code and reference it from index.html.__
+__Create a file js/object_create.js with the below code and reference it from index.html.__
 
 ```
 // Define a person

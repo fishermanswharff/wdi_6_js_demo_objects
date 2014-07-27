@@ -22,11 +22,11 @@ We are going to use ECMAScript Version 5. There are a lot of new features coming
 
 Strict mode will catch more errors, like mistakenly creating globals inside a function when not using var. Helps javascript to adhere to the Principle of Least Surprise.
 
-* "use script" at top of file or at top of function declaration.  
-* some environments do not enforce strict mode.  
-* Don't combine strict and non-strict mode files.  
-* Can be a problem for utils that combing files, like the Rails asset pipeline.  
-	* Solution may be to wrap all combined files in an immediately invoked function.  
+* "use script" at top of file or at top of function declaration.
+* some environments do not enforce strict mode.
+* Don't combine strict and non-strict mode files.
+* Can be a problem for utils that combing files, like the Rails asset pipeline.
+	* Solution may be to wrap all combined files in an immediately invoked function.
 
 [John Resig Strict Mode](http://ejohn.org/blog/ecmascript-5-strict-mode-json-and-more/)
 
@@ -40,19 +40,19 @@ It's evil, thats all just bad.
 
 ## Always use === and !==
 
-Avoids knowing complex type coercion rules for equality when using double equals, ==. 
+Avoids knowing complex type coercion rules for equality when using double equals, ==.
 
-* == applies confusing set of implicit coercions when args are different types.  
-* === does *not* apply coercions.  
+* == applies confusing set of implicit coercions when args are different types.
+* === does *not* apply coercions.
 
 ## Single var Pattern for Functions.
 
-* Provides a single place to look for all the local variables needed by the function.  
-* Prevents logical errors when a variable is used  before it’s defined (see “Hoisting)  
-* Helps you remember to declare variables and therefore minimize globals.  
-* Is less code (to type and to transfer over the wire)  
+* Provides a single place to look for all the local variables needed by the function.
+* Prevents logical errors when a variable is used  before it’s defined (see “Hoisting)
+* Helps you remember to declare variables and therefore minimize globals.
+* Is less code (to type and to transfer over the wire)
 
-Looks like: 
+Looks like:
 
 ```
 function func() {
@@ -62,7 +62,7 @@ function func() {
 ```
 
 ## Primitives
-Unlike Ruby, in Javascript everything is __NOT__ an Object. Some values a so basic they don't require the overhead and complexity that are built into Objects. 
+Unlike Ruby, in Javascript everything is __NOT__ an Object. Some values a so basic they don't require the overhead and complexity that are built into Objects.
 
 These are [Primitives](http://goo.gl/plsE6x), aka Primitive Types. And they are simple atomic pieces of data. These are accessed by __value__. Where objects are accessed by _reference_. (More later).
 
@@ -90,7 +90,7 @@ Some of the javascript primitives have corresponding objects, i.e. wrappers. We 
 * [Function](http://goo.gl/7GVB3)
 * [Date](http://goo.gl/DaGfQ)
 * [RegExp](http://goo.gl/6e7TJ)
- 
+
 [Built-in Objects](http://goo.gl/jvqc2d)
 
 __Don't add methods to built-in Objects__
@@ -103,7 +103,7 @@ _This is different than Ruby, were everything is stored by reference. But, simil
 ##### Primitives are "Stored by Value"
 
 ```
-var valuePerson = "Jane";  
+var valuePerson = "Jane";
 var valueAnotherPerson = valuePerson; // anotherPerson = the value of person
 valuePerson = "Joe"; // value of person changed
 
@@ -124,10 +124,9 @@ console.log(refAnotherPerson.name); // Joe
 console.log(refPerson.name); // Joe
 ```
 
-__Step through lib/stored_by.js and notice the difference between stored by value and stored by value.__
+__Step through js/stored_by.js and notice the difference between stored by value and stored by value.__
 
 
 ![Pass by Value and Reference](javacript_pass_by_ref.png)
 
 1. __Run and step through the stored_by.js file.__
-
