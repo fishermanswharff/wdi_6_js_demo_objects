@@ -371,48 +371,18 @@ Let's look at some ways we can create Objects.
 * ECMAScript 5 Object.create
 
 
-### The Factory Pattern.
+### The Factory Pattern (optional).
 
 The Factory Pattern will use a function to create object literals. The arguments to the factory function will be used to initialize and set the object being created. 
-  
-__Create a file js/object_factory.js with the below code and reference it from index.html.__
-
-
-```
- // Person Factory
- var createPerson = function(name, age) {
-
-  // This method is private it is NOT exposed outside 
-  // the createPerson function.
-  var display =  function(){
-    return this.name + " is " + this.age + " years old";
-  };
-
- // create an object literal return it.
- return {
-   name: name,
-   age: age,
-   describe: display  // use the private display method
-  };
- };
-
- var joe = createPerson("joe", 23);
- var jill = createPerson("jill", 32);
-
-console.log(joe.describe());
-console.log(jill.describe());
-```
-
-
-* Good so you can DRY up the creation of similar objects and save lines of code.	
-* Factory Function is __NOT__ a constructor function.  
-* It creates a new sayHi function for every instance, __not good!__  
-* Don't use Factory function to create just one object, overkill.  
+ 
+[Factory Pattern](FactoryPattern.md)
 
 
 ## LAB
 
 Redo the Car Lot Lab above using the Factory pattern. __Do all your work in the cars_factory_pattern branch__
+
+## Demo
 
 ### The Constructor Function Pattern.
 
@@ -480,40 +450,14 @@ __Run the above code and look at the Person.prototype and object ``__proto__``  
 ## LAB
 Redo the Car Lot Lab above using Constructor Functions. __Do all your work in the cars_constructor_function branch.__
 
-### Object.create
+## Demo
+### Object.create (optional)
 
 ECMAScript 5 defined a new way to create an object. Object.create(...).
 
 You will be seeing this more as time goes on and developers make use of this. For now, we will be using the Constructor Function to create objects.
 
-__Create a file js/object_create.js with the below code and reference it from index.html.__
-
-```
-// Define a person
-var person = {
-    numOfLegs: 2,
-    canSpeak: true,
-    said: function(msg){
-       return this.name + " said \"" + msg + "\" when he/she turned " + this.age;
-    }
-};
-
-debugger;
-var sue = Object.create(person, {name: {value: "Susan"}, age: {value: '34'} });
-console.log(sue.name + " has " + sue.numOfLegs + " legs ");
-console.log(sue.said('oh no!!!'));
-
-// Look at sue in chrome inspector
-console.log(sue.__proto__);  // person object literal defined above
-
-console.log(sue.hasOwnProperty('name')); // true
-console.log(sue.__proto__.hasOwnProperty('name')); // false
-
-console.log(sue.hasOwnProperty('numOfLegs')); // false
-console.log(sue.__proto__.hasOwnProperty('numOfLegs')); // true
-
-```
-
+[Object.create](ObjectCreate.md)
 
 ### References
 * [MDN Object Oriented Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript)
