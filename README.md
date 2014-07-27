@@ -108,7 +108,7 @@ console.log("Hey " + joe.name + " are you really " + joe['age'] + " years old?")
 
 An Object Literal:
 
-* Has properties.js/
+* Has properties.
 * Each property has a name and a value, name/value pairs.
 * A property is typically a string, but can be it can be a number _(rare)_.
 * A value can be a __Primitive__ or an __Object__, aka reference type.
@@ -119,7 +119,7 @@ An Object Literal:
 
 __Inspect joe and jill in Chrome.__
 
-### Object Literals with object properties.
+### Object Literals with properties that are objects.
 
 Object literals can have properties that are objects.
 
@@ -205,11 +205,19 @@ console.log(joe.describe(false));
 
 ### Prototypical Inheritence
 
-Each object will have an internal ``__proto__`` property that can point to another object. 
+Each object will have an internal ``__proto__`` property that can point to another object. An Object Literal's ``__proto_`` property will point to the [Object.prototype](http://goo.gl/C568wU) by default.
 
-This is used to lookup a property or method on an object. 
+An object's ``__proto__`` pointer will be used to lookup properties, _(values and methods)_. 
 
-By setting this property we can _simulate_ object inheritences.
+For the example below:  
+* When one calls person.toString().  
+* js will look for the property toString in the person object literal.  
+* It will __not__ be found.  
+* js will look for the property to toString in the object pointed to by ``person.__proto__``. This is Object.prototype.  
+* js will find the toString method on Object.prototype and execute it.  
+
+
+By setting this ``__proto_`` property we can _simulate_ object inheritance.
 
 ___Create a file js/simple_prototype.js with the below code and reference it from index.html.__
 
@@ -220,6 +228,13 @@ var person = {
       return this.name + " says " + msg;
     }
 };
+
+debugger;
+// Check the __proto__ property of person
+// It should point to the Object.prototype
+
+// In the console enter person.toString()
+// The method will be found by following the object pointed to by the __proto__ property.
 
 // Create an Object literal representing one person.
 var joe = {
@@ -236,6 +251,8 @@ console.log("Hey " + joe.name + " are you really " + joe['age'] + " years old?")
 debugger
 joe.__proto__ = person;
 
+// The sayHi property for joe will be found by following joe's 
+// __proto___ property. 
 console.log(joe.sayHi("hey there"));
 ```
 
@@ -260,8 +277,15 @@ Typically, name conflict may happen when using a third-party library or plug-in.
 
 _We will use namespaces later when we create objects._
 
+__Note:__  
+_The var PersonApp = PersonApp || {}; will be set in each file that uses the namespace._ 
+
+_Only the first file will actually set the PersonApp to {}. The other files will just assign PersonApp to itself._
+
 ```
 // create a namespace for this PersonApp 
+// If PersonApp object already exist than set it to itself.
+// Otherwise set it to an empty object literal.
 var PersonApp = PersonApp || {};
 
 // Namespace an object literal
