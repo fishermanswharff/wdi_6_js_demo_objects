@@ -20,6 +20,59 @@ Javascript does not have classes. _At least not yet, they are coming in ECMAScri
 
 But, it does provide a way to create structures that behave like classes. We'll see the few ways that we can create a _"class"_ in javacript. 
 
+
+#### Two Ways to create a new Object
+
+_lib/new_object.js_
+
+```
+// Using a Object constructor
+var newObject = new Object();
+  
+// Using a Object Literal. Preferred
+var newObject = {};
+```
+
+#### Four ways that properties can be added.
+
+_lib/object_properties.js_
+
+
+```
+// Using a Object Literal. Preferred                                                       
+var newObject = {};
+
+// ECMAScript 3 compatible approaches
+// 1. Dot syntax
+// Set properties
+var  newObject.someKey = "Hello World"; // Get properties
+var key = newObject.someKey;
+
+
+// 2. Square bracket syntax // Set properties
+newObject["someKey"] = "Hello World"; // Get properties
+var key = newObject["someKey"];
+
+
+// ECMAScript 5 only compatible approaches
+// 3. Object.defineProperty
+// Set properties
+Object.defineProperty( newObject, "someKey", {
+  value: "for more control of the property's behavior", writable: true,
+  enumerable: true,
+  configurable: true
+});
+
+
+// 4. Object.defineProperties // Set properties
+Object.defineProperties( newObject, {
+  "someKey": {
+    value: "Hello World", writable: true
+  },
+  "anotherKey": { value: "Foo bar", writable: false }
+});
+
+```
 ## Object Literals.
 
 And Object literal is the simplest way to create an object in javacript. It looks and behaves somewhat like a Ruby hash but has some key differences.
