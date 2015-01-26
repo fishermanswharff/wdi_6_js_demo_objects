@@ -25,7 +25,7 @@ But, it does provide a way to create structures that behave like classes. We'll 
 
 _js/new_object.js_
 
-```
+```javascript
 // Using a Object constructor
 var newObject = new Object();
   
@@ -38,7 +38,7 @@ var newObject = {};
 _js/object_properties.js_
 
 
-```
+```javascript
 // Using a Object Literal. Preferred                                                       
 var newObject = {};
 
@@ -80,7 +80,7 @@ And Object literal is the simplest way to create an object in javacript. It look
 
 __Create a file js/simple.js with the below code and reference it from index.html.__
 
-```
+```javascript
 // Create an Object literal representing one person.
 var joe = {
   name: "Joe Smoe",
@@ -125,7 +125,7 @@ Object literals can have properties that are objects.
 
 __Create a file js/simple_address.js with the below code and reference it from index.html.__
 
-```
+```javascript
 var jill = {
   name: "Jill Smill",
   age: 32
@@ -182,7 +182,7 @@ Here we are pointing the the joe object literal's describe property at another f
 
 __Append the below code to js/simple_address.js.__
 
-```
+```javascript
 // Can change the describe function later, at runtime.
 // by setting the describe property
 joe.describe = function(showDetail){
@@ -224,7 +224,7 @@ __By setting this ``__proto_`` property we can _simulate_ object inheritance.__
 
 ___Create a file js/simple_prototype.js with the below code and reference it from index.html.__
 
-```
+```javascript
 var person = {
     type: 'person',
     sayHi: function(msg){
@@ -295,7 +295,7 @@ _The var PersonApp = PersonApp || {}; will be set in each file that uses the nam
 
 _Only the first file will actually set the PersonApp to {}. The other files will just assign PersonApp to itself._
 
-```
+```javascript
 // create a namespace for this PersonApp 
 // If PersonApp object already exist than set it to itself.
 // Otherwise set it to an empty object literal.
@@ -343,7 +343,7 @@ _The cars_object_literal_done branch has a completed version of this lab if you 
 
 _Note: you will have to create a cars.html that will use each of the above js files_
 
-```
+```html
  ...
  <body>
       <h3>Car Lot</h3>
@@ -394,7 +394,7 @@ Many environments, including browsers, are optimized to use this kind of constru
 __Create a file js/constructor_function.js with the below code and reference it from index.html.__
 
 
-```
+```javascript
 debugger;
 
 // Constructor Function object creation
