@@ -29,10 +29,10 @@ But, it does provide a way to create structures that behave like classes. We'll 
 _js/new_object.js_
 
 ```javascript
-// Using a Object constructor
+// Using an Object constructor
 var newObjectFromContructor = new Object();
 
-// Using a Object Literal. Preferred
+// Using an Object Literal. Preferred
 var newObjectFromLiteral = {};
 ```
 
@@ -42,7 +42,7 @@ _js/object_properties.js_
 
 
 ```javascript
-// Using a Object Literal. Preferred
+// Using an Object Literal. Preferred
 var newObjectWithProperties = {};
 
 // ECMAScript 3 compatible approaches
@@ -51,11 +51,9 @@ var newObjectWithProperties = {};
 newObjectWithProperties.someKey = "Hello World"; // Set properties
 var someNewVariable = newObjectWithProperties.someKey; // Get properties
 
-
 // 2. Square bracket syntax // Set properties
 newObjectWithProperties["anotherKey"] = "Hello World"; // Set properties
 var anotherNewVariable = newObjectWithProperties["anotherKey"]; // Get properties
-
 
 // ECMAScript 5 only compatible approaches
 // 3. Object.defineProperty
@@ -66,7 +64,6 @@ Object.defineProperty(newObjectWithProperties, "oneMoreKey", {
   configurable: true
 });
 
-
 // 4. Object.defineProperties // Set properties
 Object.defineProperties( newObjectWithProperties, {
   "aNewKey": {
@@ -74,7 +71,6 @@ Object.defineProperties( newObjectWithProperties, {
   },
   "anOldKey": { value: "Foo bar", writable: false }
 });
-
 ```
 ## Object Literals.
 
