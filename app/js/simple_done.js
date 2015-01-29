@@ -22,5 +22,5 @@ jill.describe = function(){
   return this.name + " is " + this.age + " years old";
 }
 
-console.log("Hey " + jill.name +  " where you going with that gun in your hand");
-console.log("Hey " + joe.name + " are you really " + joe['age'] + " years old?");
+//console.log("Hey " + jill.name +  " where you going with that gun in your hand");
+//console.log("Hey " + joe.name + " are you really " + joe['age'] + " years old?");

@@ -8,5 +8,5 @@ debugger;
 theBottle.__proto__ = record;
 
 // Look a the song object's prototype, __proto__. It should be the record
-console.log(theBottle.title + "media type is " + theBottle.media_type);
+//console.log(theBottle.title + "media type is " + theBottle.media_type);
 

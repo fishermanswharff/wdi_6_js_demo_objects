@@ -18,5 +18,5 @@
  var joe = createPerson("joe", 23);
  var jill = createPerson("jill", 32);
 
-console.log(joe.describe());
-console.log(jill.describe());
+//console.log(joe.describe());
+//console.log(jill.describe());

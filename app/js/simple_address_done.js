@@ -33,13 +33,13 @@ var joe = {
   }
 };
 
-console.log(joe.name + "'s address is: " + joe.address.display());
+//console.log(joe.name + "'s address is: " + joe.address.display());
 
 // describe joe.
-console.log(joe.describe());
+//console.log(joe.describe());
 
 // Show all the properties and their value.
 for(var prop in joe){
-  console.log(joe.name + " property = " + prop + ", value is " + joe[prop]);
+  //console.log(joe.name + " property = " + prop + ", value is " + joe[prop]);
 
 }

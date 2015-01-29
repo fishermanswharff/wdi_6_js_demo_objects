@@ -33,10 +33,10 @@ var joe = {
   }
 };
 
-console.log(joe.name + "'s address is: " + joe.address.display());
+//console.log(joe.name + "'s address is: " + joe.address.display());
 
 // describe joe.
-console.log(joe.describe());
+//console.log(joe.describe());
 
 // Can change the describe function later, at runtime.
 // by setting the describe property
@@ -51,13 +51,13 @@ joe.describe = function(showDetail){
 };
 
 // describe joe.
-console.log(joe.describe(true));
+//console.log(joe.describe(true));
 
 // describe joe in detail
-console.log(joe.describe(false));
+//console.log(joe.describe(false));
 
 // Show all the properties and their value.
 for(var prop in joe){
-  console.log(joe.name + " property = " + prop + ", value is " + joe[prop]);
+  //console.log(joe.name + " property = " + prop + ", value is " + joe[prop]);
 
 }

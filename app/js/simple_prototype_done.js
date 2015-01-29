@@ -15,9 +15,9 @@ var joe = {
   }
 };
 
-console.log("Hey " + joe.name + " are you really " + joe['age'] + " years old?");
+//console.log("Hey " + joe.name + " are you really " + joe['age'] + " years old?");
 
 debugger
 joe.__proto__ = person;
 
-console.log(joe.sayHi("hey there"));
+//console.log(joe.sayHi("hey there"));

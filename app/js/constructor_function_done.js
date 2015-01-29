@@ -44,13 +44,13 @@ var joe = new Person('joe', 23),
 // 9. Now the joe and jill variables will be pointing to 
 // the this pointers returned from Person Constructor Function.
 
-console.log(joe.describe());
+//console.log(joe.describe());
 // Property/Method Lookup
 // 10. Look in the joe object for the property/method describe. Not found.
 // 11. Look in the object pointed to by joe's __proto__ pointer. Found.
 // 12. Invoke the describe method and set the this pointer for the method 
 // to be the joe object.
 
-console.log(jill.describe());
+//console.log(jill.describe());
 // Same as above
 

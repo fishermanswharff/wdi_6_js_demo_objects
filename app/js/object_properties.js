@@ -1,4 +1,4 @@
-// Using a Object Literal. Preferred
+/*// Using a Object Literal. Preferred
 var newObject = {};
 
 // ECMAScript 3 compatible approaches
@@ -6,7 +6,6 @@ var newObject = {};
 // Set properties
 var  newObject.someKey = "Hello World"; // Get properties
 var key = newObject.someKey;
-
 
 // 2. Square bracket syntax // Set properties
 newObject["someKey"] = "Hello World"; // Get properties
@@ -30,3 +29,4 @@ Object.defineProperties( newObject, {
   },
   "anotherKey": { value: "Foo bar", writable: false }
 });
+*/
