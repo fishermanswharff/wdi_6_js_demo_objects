@@ -73,10 +73,10 @@ Object.defineProperties( newObjectWithProperties, {
 ```
 ## Object Literals.
 
-And Object literal is the simplest way to create an object in javacript. It looks and behaves somewhat like a Ruby hash but has some key differences.
+An Object literal is the simplest way to create an object in javacript. It looks and behaves somewhat like a Ruby hash but has some key differences.
 
 
-__Create a file js/simple.js with the below code and reference it from index.html.__
+__Create a file js/simple_object_literals.js with the below code__
 
 ```javascript
 // Create an Object literal representing one person.
@@ -85,7 +85,7 @@ var joe = {
   age: 23,
   // Property value is a function
   describe: function(){
-	return this.name + " is " + this.age + " years old";
+	 return this.name + " is " + this.age + " years old";
   }
 };
 
@@ -98,10 +98,6 @@ jill.age = 32;
 jill.describe = function(){
   return this.name + " is " + this.age + " years old";
 }
-
-console.log("Hey " + jill.name +  " where you going with that gun in your hand");
-console.log("Hey " + joe.name + " are you really " + joe['age'] + " years old?");
-
 ```
 
 An Object Literal:
@@ -112,64 +108,55 @@ An Object Literal:
 * A value can be a __Primitive__ or an __Object__, aka reference type.
 * A value can be a __function__. We call these properties methods.
 * A value can be based on the built-in Object, see above, or a user defined object.
-* By default is based on the build in Javascript [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object).
+* By default is based on the built-in Javascript [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object).
 
-
-__Inspect joe and jill in Chrome.__
 
 ### Object Literals with properties that are objects.
 
 Object literals can have properties that are objects.
 
-__Create a file js/simple_address.js with the below code and reference it from index.html.__
+__Create a file js/simple_object_literals_address.js with the below code__
 
 ```javascript
-var jill = {
-  name: "Jill Smill",
+var judy = {
+  name: "Judy Dench",
   age: 32
 };
 var fred = {
-  name: "Fred Smoe",
+  name: "Fred Armison",
   age: 27
 };
 
-// Objects can have objects.
-// The siblings property's value is an Array
-// The address property's value is a Object literal.
-// The describe property's value is a Function, which is also an object.
-var joe = {
-  name: "Joe Smoe",
-  age: 23,
+/*
+Objects can have objects.
+The siblings property's value is an Array
+The address property's value is a Object literal.
+The describe property's value is a Function, which is also an object.
+*/
+
+var jason = {
+  name: "Jason Wharff",
+  age: 34,
   occupation: "Software Developer",
-  siblings: [
-	jill,
-	fred,
-  ],
+  siblings: [judy,fred],
   address: {
-	street: '44 Warren St.',
-	city: 'Stoneham',
-	state: 'MA',
-	zip: 01345,
-	display: function(){
-	   return this.street + " " + this.city + ", " + this.state;
-	}
+    street: '44 Warren St.',
+    city: 'Stoneham',
+    state: 'MA',
+    zip: 01345,
+    display: function(){
+       return this.street + ", " + this.city + ", " + this.state;
+    }
   },
   describe: function(){
-	return this.name + " is " + this.age + " years old";
+    return this.name + " is " + this.age + " years old";
   }
 };
 
-console.log(joe.name + "'s address is: " + joe.address.display());
-
 // Show all the properties and their value.
-for(var prop in joe){
-  console.log(joe.name + " property = " + prop + ", value is " + joe[prop]);
-
+for(var prop in jason){
+  //console.log(joe.name + " property = " + prop + ", value is " + joe[prop]);
 }
-
-```
-
-__Inspect joe and jill in Chrome.__
 
 
 

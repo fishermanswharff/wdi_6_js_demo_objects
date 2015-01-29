@@ -1,3 +1,4 @@
+'use strict';
 // Create an Object literal representing one person.
 var joe = {
   name: "Joe Smoe",
