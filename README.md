@@ -43,24 +43,24 @@ _js/object_properties.js_
 
 ```javascript
 // Using a Object Literal. Preferred
-var newObject = {};
+var newObjectWithProperties = {};
 
 // ECMAScript 3 compatible approaches
 // 1. Dot syntax
 // Set properties
-var  newObject.someKey = "Hello World"; // Get properties
-var key = newObject.someKey;
+newObjectWithProperties.someKey = "Hello World"; // Set properties
+var someNewVariable = newObjectWithProperties.someKey; // Get properties
 
 
 // 2. Square bracket syntax // Set properties
-newObject["someKey"] = "Hello World"; // Get properties
-var key = newObject["someKey"];
+newObjectWithProperties["anotherKey"] = "Hello World"; // Set properties
+var anotherNewVariable = newObjectWithProperties["anotherKey"]; // Get properties
 
 
 // ECMAScript 5 only compatible approaches
 // 3. Object.defineProperty
 // Set properties
-Object.defineProperty( newObject, "someKey", {
+Object.defineProperty(newObjectWithProperties, "oneMoreKey", {
   value: "for more control of the property's behavior", writable: true,
   enumerable: true,
   configurable: true
@@ -68,11 +68,11 @@ Object.defineProperty( newObject, "someKey", {
 
 
 // 4. Object.defineProperties // Set properties
-Object.defineProperties( newObject, {
-  "someKey": {
-    value: "Hello World", writable: true
+Object.defineProperties( newObjectWithProperties, {
+  "aNewKey": {
+    value: "I like turtles", writable: true
   },
-  "anotherKey": { value: "Foo bar", writable: false }
+  "anOldKey": { value: "Foo bar", writable: false }
 });
 
 ```
