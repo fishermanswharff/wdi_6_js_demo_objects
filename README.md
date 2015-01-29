@@ -40,7 +40,6 @@ var newObjectFromLiteral = {};
 
 _js/object_properties.js_
 
-
 ```javascript
 // Using an Object Literal. Preferred
 var newObjectWithProperties = {};
