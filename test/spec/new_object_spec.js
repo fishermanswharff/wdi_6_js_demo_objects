@@ -1,3 +1,4 @@
+'use strict';
 describe('Two Ways to create a new Object',function(){
   it('Using a Object constructor',function(){
     expect(newObjectFromContructor).toEqual({});

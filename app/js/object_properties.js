@@ -1,3 +1,4 @@
+'use strict';
 // Using a Object Literal. Preferred
 var newObjectWithProperties = {};
 

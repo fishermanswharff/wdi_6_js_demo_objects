@@ -1,3 +1,5 @@
+'use strict';
+
 // Define a person
 var person = {
     numOfLegs: 2,

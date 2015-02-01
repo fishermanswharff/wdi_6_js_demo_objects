@@ -1,3 +1,4 @@
+'use strict';
 // The primitive data type String is stored as a value
 debugger;
 

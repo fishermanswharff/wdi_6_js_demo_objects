@@ -18,10 +18,7 @@ module.exports = function(config) {
     ],
     exclude: [],
     port: 9876,
-    browsers: [
-      'PhantomJS',
-      'Chrome'
-    ],
+    browsers: ['PhantomJS'],
     plugins: [
       'karma-phantomjs-launcher',
       'karma-jasmine',

@@ -1,3 +1,4 @@
+'use strict';
 var judy = {
   name: "Judy Dench",
   age: 32
@@ -10,7 +11,7 @@ var fred = {
 /*
 Objects can have objects.
 The siblings property's value is an Array
-The address property's value is a Object literal.
+The address property's value is an Object literal.
 The describe property's value is a Function, which is also an object.
 */
 
@@ -23,7 +24,7 @@ var jason = {
     street: '44 Warren St.',
     city: 'Stoneham',
     state: 'MA',
-    zip: 01345,
+    zip: 21144,
     display: function(){
        return this.street + ", " + this.city + ", " + this.state;
     }
@@ -33,9 +34,14 @@ var jason = {
   }
 };
 
-// Show all the properties and their value.
 /*
-for(var prop in jason){
-  //console.log(joe.name + " property = " + prop + ", value is " + joe[prop]);
-}
+jason.describe = function(showDetail){
+  var info;
+  if(showDetail){
+    info = this.name + " age is " + this.age + ", address is: " + this.address.display();
+  }else{
+    info = this.name + " is " + this.age + " years old";
+  }
+  return info
+};
 */

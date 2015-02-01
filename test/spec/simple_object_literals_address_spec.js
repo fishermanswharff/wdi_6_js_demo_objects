@@ -1,18 +1,23 @@
+'use strict';
 describe('Simple object literals can have objects, arrays, primitives, functions and more as values',function(){
   describe('judy',function(){
-    it('has a name',function(){
+    it('has a `name` key with a string value',function(){
+      expect(judy.name).toEqual(jasmine.any(String));
       expect(judy.name).toEqual("Judy Dench");
     });
-    it('has an age',function(){
+    it('has an `age` key with a Number value',function(){
+      expect(judy.age).toEqual(jasmine.any(Number));
       expect(judy.age).toEqual(32);
     });
   });
 
   describe('fred',function(){
-    it('has a name',function(){
+    it('has a `name` key with a String value',function(){
+      expect(fred.name).toEqual(jasmine.any(String));
       expect(fred.name).toEqual('Fred Armison');
     });
-    it('has an age',function(){
+    it('has an `age` key with a Number value',function(){
+      expect(fred.age).toEqual(jasmine.any(Number));
       expect(fred.age).toEqual(27);
     });
   });
@@ -54,9 +59,9 @@ describe('Simple object literals can have objects, arrays, primitives, functions
       expect(jason.address.state).toEqual(jasmine.any(String));
       expect(jason.address.state).toEqual("MA");
     });
-    it('has a `zip` key with a number value of 01345',function(){
+    it('has a `zip` key with a number value of 21144',function(){
       expect(jason.address.zip).toEqual(jasmine.any(Number));
-      expect(jason.address.zip).toEqual(01345);
+      expect(jason.address.zip).toEqual(21144);
     });
     it('has a `display` key with a function as a value',function(){
       expect(jason.address.display).toEqual(jasmine.any(Function));
@@ -72,30 +77,3 @@ describe('Simple object literals can have objects, arrays, primitives, functions
     });
   });
 });
-
-/*
-describe('',function(){
-  it('',function(){
-    expect().toEqual();
-  });
-});
-*/
-
-/*
-Expectations/Matchers
-————————————————————
-expect().toBe();
-expect().not.toBe();
-expect().toMatch(//);
-expect().toBeDefined();
-expect().toBeUndefined();
-expect().not.toBeUndefined();
-expect().toBeNull();
-expect().toBeTruthy();
-expect().toBeFalsy();
-expect().toContain("");
-expect().toBeLessThan();
-expect().toBeGreaterThan();
-expect(pi).toBeCloseTo(e, 2);
-expect().toThrow();
-*/

@@ -1,3 +1,4 @@
+'use strict';
 describe('There are 4 ways you can add properties on an object',function(){
   it('Using the dot syntax to get and set properties',function(){
     expect(newObjectWithProperties).toBeDefined();

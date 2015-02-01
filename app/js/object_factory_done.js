@@ -1,3 +1,4 @@
+'use strict';
 // Person Factory
  var createPerson = function(name, age) {
 

@@ -153,24 +153,16 @@ var jason = {
   }
 };
 
-// Show all the properties and their value.
-for(var prop in jason){
-  //console.log(joe.name + " property = " + prop + ", value is " + joe[prop]);
-}
-
-
-
 ### Objects properties and methods can change anytime.
 
-Here we are pointing the the joe object literal's describe property at another function.
+Here we are setting the `jason` object literal's describe property with another (different) function.
 
-
-__Append the below code to js/simple_address.js.__
+There is no test for this, we just want you to be aware that you can update a property's value at any time.
 
 ```javascript
 // Can change the describe function later, at runtime.
 // by setting the describe property
-joe.describe = function(showDetail){
+jason.describe = function(showDetail){
   var info;
   if(showDetail){
     info = this.name + " age is " + this.age + ", address is: " + this.address.display();
@@ -180,12 +172,11 @@ joe.describe = function(showDetail){
   return info
 };
 
-// describe joe.
-console.log(joe.describe(true));
+// describe jason.
+console.log(jason.describe(true));
 
 // describe joe in detail
-console.log(joe.describe(false));
-
+console.log(jason.describe(false));
 ```
 
 ### Prototypical Inheritence
@@ -197,17 +188,15 @@ An object's ``__proto__`` pointer will be used to lookup properties, _(values an
 ![Object Literal Prototype](images/object_literal_prototype.png)
 
 For the example above:
-* When one calls joe.toString().
-* js will look for the property toString in the joe object literal.
+* When one calls jason.toString().
+* js will look for the property toString in the jason object literal.
 * It will __not__ be found.
-* js will look for the property toString in the object pointed to by ``joe.__proto__``. _This is the Object.prototype._
+* js will look for the property toString in the object pointed to by ``jason.__proto__``. _This is the Object.prototype._
 * js will find the toString method on Object.prototype and execute it.
-
-
 
 __By setting this ``__proto_`` property we can _simulate_ object inheritance.__
 
-___Create a file js/simple_prototype.js with the below code and reference it from index.html.__
+___Create a file js/simple_prototype.js with the below code__
 
 ```javascript
 var person = {
@@ -217,7 +206,6 @@ var person = {
     }
 };
 
-debugger;
 // Check the __proto__ property of person
 // It should point to the Object.prototype
 

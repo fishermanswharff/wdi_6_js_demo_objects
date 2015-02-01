@@ -1,3 +1,4 @@
+'use strict';
 var record = {media_type: 'vinyl'};
 var theBottle = {title: "The Bottle"};
 

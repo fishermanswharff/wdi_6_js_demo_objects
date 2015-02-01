@@ -1,4 +1,5 @@
-debugger;
+'use strict';
+
 
 // Constructor Function object creation
 // Constructor function is camel cased by convention. 
