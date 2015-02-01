@@ -183,22 +183,22 @@ console.log(jason.describe(false));
 
 ### Prototypical Inheritence
 
-Each object will have an internal ``__proto__`` property that can point to another object. An Object Literal's ``__proto_`` property will point to the [Object.prototype](http://goo.gl/C568wU) by default.
+Each object will have an internal `__proto__` property that can point to another object. An Object Literal's `__proto_` property will point to the [Object.prototype](http://goo.gl/C568wU) by default.
 
-An object's ``__proto__`` pointer will be used to lookup properties, _(values and methods)_.
+An object's `__proto__` pointer will be used to lookup properties, _(values and methods)_.
 
 ![Object Literal Prototype](images/object_literal_prototype.png)
 
 For the example above:
-* When one calls jason.toString().
-* js will look for the property toString in the jason object literal.
-* It will __not__ be found.
-* js will look for the property toString in the object pointed to by ``jason.__proto__``. _This is the Object.prototype._
+* When one calls joe.toString().
+* js will look for the property toString in the joe object literal.
+* It will **not** be found.
+* js will look for the property toString in the object pointed to by `joe.__proto__`. _This is the Object.prototype._
 * js will find the toString method on Object.prototype and execute it.
 
-__By setting this ``__proto_`` property we can _simulate_ object inheritance.__
+**By setting this `__proto__` property we can _simulate_ object inheritance.**
 
-___Create a file js/simple_prototype.js with the below code__
+**Create a file js/simple_prototype.js with the below code**
 
 ```javascript
 // The person object inherits from the base javascript Object.prototype
@@ -234,7 +234,7 @@ For the example above:
 * When one calls jeff.sayHi("hey there").
 * js will look for the property sayHi in the jeff object literal.
 * It will not be found.
-* js will look for the property sayHi in the object pointed to by ``jeff.__proto__``. This is the person object.
+* js will look for the property sayHi in the object pointed to by `jeff.__proto__`. This is the person object.
 * js will find the sayHi method on the person object and execute it.
 
 ### Use Object Literals for objects that are only created once.
@@ -249,14 +249,14 @@ Later, we will see how to emulate a class in Javascript that will be used to cre
 
 ### Using Object Literals to create a Namespace.
 
-Javascript namespaces are used to disambiguate names in an application. This is so that names in an application do not conflict.
+**Create a file js/namespacing_one.js with the below code**
 
-Typically, name conflict may happen when using a third-party library or plug-in.
+Javascript namespaces are used to disambiguate names in an application and prevent polluting the global namespace. This is so that names in an application do not conflict. Typically, name conflicts may happen when using a third-party library or plug-in, such as Bootstrap, jQuery, AngularJS, EmberJS, BackboneJS, or any other Javascript/CSS framework.
 
-_We will use namespaces later when we create objects._
+*We will use namespaces later when we create objects.*
 
-__Note:__
-_The var PersonApp = PersonApp || {}; will be set in each file that uses the namespace._
+**Note:**
+*The var PersonApp = PersonApp || {}; will be set in each file that uses the namespace.*
 
 _Only the first file will actually set the PersonApp to {}. The other files will just assign PersonApp to itself._
 
@@ -276,12 +276,11 @@ var joe = PersonApp.createPerson('joe', 23);
 // Namespace a Constructor Function
 PersonApp.Person = function Person(){ .. };
 var jill = new PersonApp('jill', 33);
-
 ```
 
 ## LAB
 
-Implement "Honest Tom's Used Car Lot" using object literals. __Do all your work in the cars_object_literal branch__
+Implement "Honest Tom's Used Car Lot" using object literals. **Do all your work in the cars_object_literal branch**
 
 _The cars_object_literal_done branch has a completed version of this lab if you get stuck_.
 
@@ -327,7 +326,7 @@ The problem with Object Literals is that they can get very tedious. For example,
 
 Or I may want to add a property or change a method for a person then I MUST do this for every single person in the app!
 
-__Use Object Literals for objects that are only created once.__
+**Use Object Literals for objects that are only created once.**
 
 Let's look at some ways we can create Objects.
 
@@ -345,7 +344,7 @@ The Factory Pattern will use a function to create object literals. The arguments
 
 ## LAB
 
-Redo the Car Lot Lab above using the Factory pattern. __Do all your work in the cars_factory_pattern branch__
+Redo the Car Lot Lab above using the Factory pattern. **Do all your work in the cars_factory_pattern branch**
 
 ## Demo
 
@@ -356,7 +355,7 @@ This is the most common way to create objects in Javascript. It's the most commo
 Many environments, including browsers, are optimized to use this kind of constructor. The *convention* is to uppercase the first name of a function that will be used as a constructor.
 
 
-__Create a file js/constructor_function.js with the below code and reference it from index.html.__
+**Create a file js/constructor_function.js with the below code and reference it from index.html.**
 
 
 ```javascript
@@ -390,9 +389,9 @@ console.log(joe.describe());
 console.log(jill.describe());
 ```
 
-__BIG NOTE:__ The _``__proto__``_ property is NOT the same as the _``prototype``_ property.
-The ``__proto__ `` property is __ONLY__ used for object property lookup.
-The ``Function.prototype`` property will only exist for functions.
+**BIG NOTE:** The *`__proto__`* property is NOT the same as the *`prototype`* property.
+The `__proto__` property is **ONLY** used for object property lookup.
+The `Function.prototype` property will only exist for functions.
 
 ##### Property Lookup and the Prototype.
 
@@ -402,18 +401,18 @@ For the example above:
 * When one calls joe.describe();
 * js will look for the property describe in the joe object literal.
 * It will not be found.
-* js will look for the property describe in the object pointed to by ``joe.__proto__``. This is the Person.prototype object.
+* js will look for the property describe in the object pointed to by `joe.__proto__`. This is the Person.prototype object.
 * js will find the describe method on the Person.prototype object and execute it.
 
 
 ![Constructor function](images/constructor_function1.png)
 
 
-__Run the above code and look at the Person.prototype and object ``__proto__``  properties.__
+**Run the above code and look at the Person.prototype and object `__proto__`properties.**
 
 
 ## LAB
-Redo the Car Lot Lab above using Constructor Functions. __Do all your work in the cars_constructor_function branch.__
+Redo the Car Lot Lab above using Constructor Functions. **Do all your work in the cars_constructor_function branch.**
 
 ## Demo
 ### Object.create (optional)
@@ -427,7 +426,7 @@ You will be seeing this more as time goes on and developers make use of this. Fo
 ### References
 * [MDN Object Oriented Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript)
 
-* __Zakas, Nicholas C. (2011-12-20). Professional JavaScript for Web Developers__
+* **Zakas, Nicholas C. (2011-12-20). Professional JavaScript for Web Developers**
 Chapter 6.
 	* The Factory Pattern.
 	* The Constructor Pattern
@@ -452,7 +451,7 @@ Chapter 6.
 * Object Literals are somewhat like Maps or Hashes in other languages.
 * Object Literals should only be used when you ONLY need one instance of an object.
 * Creating Objects with the Factory Pattern, or Factory method.
-* Creating Objects with the new keyword and Constructor functions. __USE THIS METHOD__
+* Creating Objects with the new keyword and Constructor functions. **USE THIS METHOD**
 * Creating Objects with Object.create(...).
 * Most prevalant way to create objects is with the 'new' keyword and Constructor Functions.
 * Learn about Prototypes and Prototypical Inheritance.
