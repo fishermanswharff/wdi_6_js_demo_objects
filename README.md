@@ -81,15 +81,15 @@ __Create a file js/simple_object_literals.js with the below code__
 ```javascript
 // Create an Object literal representing one person.
 var joe = {
-  name: "Joe Smoe",
+  name: "Joe Schmoe",
   age: 23,
   // Property value is a function
   describe: function(){
-	 return this.name + " is " + this.age + " years old";
+    return this.name + " is " + this.age + " years old";
   }
 };
 
-// OR
+// OR 
 var jill = {};
 jill.name = "Jill Smill";
 jill.age = 32;
@@ -97,7 +97,8 @@ jill.age = 32;
 // Property value is a function
 jill.describe = function(){
   return this.name + " is " + this.age + " years old";
-}
+};
+
 ```
 
 An Object Literal:
@@ -152,6 +153,7 @@ var jason = {
     return this.name + " is " + this.age + " years old";
   }
 };
+```
 
 ### Objects properties and methods can change anytime.
 
@@ -175,7 +177,7 @@ jason.describe = function(showDetail){
 // describe jason.
 console.log(jason.describe(true));
 
-// describe joe in detail
+// describe jason in detail
 console.log(jason.describe(false));
 ```
 
@@ -199,61 +201,51 @@ __By setting this ``__proto_`` property we can _simulate_ object inheritance.__
 ___Create a file js/simple_prototype.js with the below code__
 
 ```javascript
+// The person object inherits from the base javascript Object.prototype
 var person = {
-    type: 'person',
-    sayHi: function(msg){
-      return this.name + " says " + msg;
-    }
+  type: 'person',
+  name: 'person',
+  sayHi: function(msg){
+    return this.name + " says " + msg;
+  }
 };
 
-// Check the __proto__ property of person
-// It should point to the Object.prototype
-
-// In the console enter person.toString()
-// The method will be found by following the object pointed to by the __proto__ property.
-
-// Create an Object literal representing one person.
-var joe = {
-  name: "Joe Smoe",
+/* Create an Object literal called `jeff` representing one person.
+————————————————————————————————————————————————————————————————————————
+the `jeff` object should have three properties: name: String, age: Number, describe: function(){}
+the `jeff` object inherits from the person object: jeff.__proto__ = person
+*/
+var jeff = {
+  name: "Jeff Horn",
   age: 23,
-  // Property value is a function
   describe: function(){
     return this.name + " is " + this.age + " years old";
   }
 };
 
-console.log("Hey " + joe.name + " are you really " + joe['age'] + " years old?");
+jeff.__proto__ = person;
 
-debugger
-joe.__proto__ = person;
-
-// The sayHi property for joe will be found by following joe's
-// __proto___ property.
-console.log(joe.sayHi("hey there"));
+/*  The sayHi property for jeff will be found by following jeff's __proto___ property. */
+jeff.sayHi('hello world');
 ```
-
-
-![Object Literal Inheritance](images/object_literal_inherit.png)
+<!-- ![Object Literal Inheritance](images/object_literal_inherit.png) -->
 
 For the example above:
-* When one calls joe.sayHi("hey there").
-* js will look for the property sayHi in the joe object literal.
+* When one calls jeff.sayHi("hey there").
+* js will look for the property sayHi in the jeff object literal.
 * It will not be found.
-* js will look for the property sayHi in the object pointed to by ``joe.__proto__``. This is the person object.
+* js will look for the property sayHi in the object pointed to by ``jeff.__proto__``. This is the person object.
 * js will find the sayHi method on the person object and execute it.
 
 ### Use Object Literals for objects that are only created once.
 
 What if we want to create a lot of people?
 
-We will have to create lots of object literals and each time a property or method changes we'll have to change each object literal in the program. _Makes maintainence very difficult and the code not DRY_
+We will have to create lots of object literals and each time a property or method changes we'll have to change each object literal in the program. *Makes maintainence very difficult and the code not DRY*. For example, what if we want to change each person to have an occupation that is shown in the describe function?
 
-For example, we want to change each person to have an occupation
-that is shown in the describe function?
+Use Object literals for instances that will exist only once, or *Singletons*, in your application. For example, CarLot or RecordCompany.
 
-Use Object literals for instances that will exist only once, Singletons, in your application. For example, CarLot or RecordCompany.
-
-Later, we will see how to emulate a class in Javascript that will be used to creates instances, objects, of something.
+Later, we will see how to emulate a class in Javascript that will be used to create instances, or objects, of something.
 
 ### Using Object Literals to create a Namespace.
 

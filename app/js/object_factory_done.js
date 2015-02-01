@@ -8,7 +8,7 @@
     return this.name + " is " + this.age + " years old";
   };
 
- // create an object literal return it.
+ // create an object literal and return it.
  return {
    name: name,
    age: age,

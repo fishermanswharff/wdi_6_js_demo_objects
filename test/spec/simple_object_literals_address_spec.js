@@ -63,13 +63,13 @@ describe('Simple object literals can have objects, arrays, primitives, functions
       expect(jason.address.zip).toEqual(jasmine.any(Number));
       expect(jason.address.zip).toEqual(21144);
     });
-    it('has a `display` key with a function as a value',function(){
+    it('has a `display` key with a method as a value',function(){
       expect(jason.address.display).toEqual(jasmine.any(Function));
     });
     it('`display`’s function returns a string of the address with comma separated values: "44 Warren St., Stoneham, MA"',function(){
       expect(jason.address.display()).toEqual("44 Warren St., Stoneham, MA");
     });
-    it('has a `describe` key with a function as a the value',function(){
+    it('has a `describe` key with a method as a the value',function(){
       expect(jason.describe).toEqual(jasmine.any(Function));
     });
     it('`describe` function returns a string "Jason Wharff is 34 years old"',function(){
