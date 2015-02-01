@@ -19,14 +19,14 @@
 
 ## No Classes in Javascript.
 
-Javascript does not have classes. _At least not yet, they are coming in ECMAScript 6_.
+Javascript does not have classes. *At least not yet, they are coming in ECMAScript 6*.
 
-But, it does provide a way to create structures that behave like classes. We'll see the few ways that we can create a _"class"_ in javacript.
+But, it does provide a way to create structures that behave like classes. We'll see the few ways that we can create a *"class"* in javacript.
 
 
 #### Two Ways to create a new Object
 
-_js/new_object.js_
+*js/new_object.js*
 
 ```javascript
 // Using an Object constructor
@@ -38,7 +38,7 @@ var newObjectFromLiteral = {};
 
 #### Four ways that properties can be added.
 
-_js/object_properties.js_
+*js/object_properties.js*
 
 ```javascript
 // Using an Object Literal. Preferred
@@ -76,7 +76,7 @@ Object.defineProperties( newObjectWithProperties, {
 An Object literal is the simplest way to create an object in javacript. It looks and behaves somewhat like a Ruby hash but has some key differences.
 
 
-__Create a file js/simple_object_literals.js with the below code__
+**Create a file js/simple_object_literals.js with the below code**
 
 ```javascript
 // Create an Object literal representing one person.
@@ -105,9 +105,9 @@ An Object Literal:
 
 * Has properties.
 * Each property has a name and a value, name/value pairs.
-* A property is typically a string, but can be it can be a number _(rare)_.
-* A value can be a __Primitive__ or an __Object__, aka reference type.
-* A value can be a __function__. We call these properties methods.
+* A property is typically a string, but can be it can be a number *(rare)*.
+* A value can be a **Primitive** or an **Object**, aka reference type.
+* A value can be a **function**. We call these properties methods.
 * A value can be based on the built-in Object, see above, or a user defined object.
 * By default is based on the built-in Javascript [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object).
 
@@ -116,7 +116,7 @@ An Object Literal:
 
 Object literals can have properties that are objects.
 
-__Create a file js/simple_object_literals_address.js with the below code__
+**Create a file js/simple_object_literals_address.js and fulfill the tests**
 
 ```javascript
 var judy = {
@@ -183,9 +183,9 @@ console.log(jason.describe(false));
 
 ### Prototypical Inheritence
 
-Each object will have an internal `__proto__` property that can point to another object. An Object Literal's `__proto_` property will point to the [Object.prototype](http://goo.gl/C568wU) by default.
+Each object will have an internal `__proto__` property that can point to another object. An Object Literal's `__proto__` property will point to the [Object.prototype](http://goo.gl/C568wU) by default.
 
-An object's `__proto__` pointer will be used to lookup properties, _(values and methods)_.
+An object's `__proto__` pointer will be used to lookup properties, *(values and methods)*.
 
 ![Object Literal Prototype](images/object_literal_prototype.png)
 
@@ -193,12 +193,12 @@ For the example above:
 * When one calls joe.toString().
 * js will look for the property toString in the joe object literal.
 * It will **not** be found.
-* js will look for the property toString in the object pointed to by `joe.__proto__`. _This is the Object.prototype._
+* js will look for the property toString in the object pointed to by `joe.__proto__`. *This is the Object.prototype.*
 * js will find the toString method on Object.prototype and execute it.
 
-**By setting this `__proto__` property we can _simulate_ object inheritance.**
+**By setting this `__proto__` property we can *simulate* object inheritance.**
 
-**Create a file js/simple_prototype.js with the below code**
+**Create a file js/simple_prototype.js and fulfill the tests**
 
 ```javascript
 // The person object inherits from the base javascript Object.prototype
@@ -225,7 +225,7 @@ var jeff = {
 
 jeff.__proto__ = person;
 
-/*  The sayHi property for jeff will be found by following jeff's __proto___ property. */
+/*  The sayHi property for jeff will be found by following jeff's __proto__ property. */
 jeff.sayHi('hello world');
 ```
 <!-- ![Object Literal Inheritance](images/object_literal_inherit.png) -->
@@ -249,16 +249,16 @@ Later, we will see how to emulate a class in Javascript that will be used to cre
 
 ### Using Object Literals to create a Namespace.
 
-**Create a file js/namespacing_one.js with the below code**
-
 Javascript namespaces are used to disambiguate names in an application and prevent polluting the global namespace. This is so that names in an application do not conflict. Typically, name conflicts may happen when using a third-party library or plug-in, such as Bootstrap, jQuery, AngularJS, EmberJS, BackboneJS, or any other Javascript/CSS framework.
+
+**Create a file js/simple_namespacing.js and fulfill the tests**
 
 *We will use namespaces later when we create objects.*
 
 **Note:**
 *The var PersonApp = PersonApp || {}; will be set in each file that uses the namespace.*
 
-_Only the first file will actually set the PersonApp to {}. The other files will just assign PersonApp to itself._
+*Only the first file will actually set the PersonApp to {}. The other files will just assign PersonApp to itself.*
 
 ```javascript
 // create a namespace for this PersonApp
@@ -282,7 +282,7 @@ var jill = new PersonApp('jill', 33);
 
 Implement "Honest Tom's Used Car Lot" using object literals. **Do all your work in the cars_object_literal branch**
 
-_The cars_object_literal_done branch has a completed version of this lab if you get stuck_.
+*The cars_object_literal_done branch has a completed version of this lab if you get stuck*.
 
 * Create a couple addresses in js/addresses.js.
 	* Properties are street, city, state and country.
@@ -305,7 +305,7 @@ _The cars_object_literal_done branch has a completed version of this lab if you 
 * Log the cars in the lot to the chrome console usiing console.log.
 * Log the totalValue of all the cars in the lot to the chrome console.
 
-_Note: you will have to create a cars.html that will use each of the above js files_
+*Note: you will have to create a cars.html that will use each of the above js files*
 
 ```html
  ...
@@ -350,7 +350,7 @@ Redo the Car Lot Lab above using the Factory pattern. **Do all your work in the 
 
 ### The Constructor Function Pattern.
 
-This is the most common way to create objects in Javascript. It's the most common way to implement Classes. This pattern is used with the javascript _new_ keyword to create objects.
+This is the most common way to create objects in Javascript. It's the most common way to implement Classes. This pattern is used with the javascript *new* keyword to create objects.
 
 Many environments, including browsers, are optimized to use this kind of constructor. The *convention* is to uppercase the first name of a function that will be used as a constructor.
 
