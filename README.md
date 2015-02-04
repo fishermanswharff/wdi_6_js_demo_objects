@@ -6,7 +6,7 @@
 
 ## Objectives
 
-* Learn about the most common ways to create Javascript Objects.
+* Learn about the most common ways to create Javascript Objects and object properties.
 	* Object Literal.
 	* Factory Pattern.
 	* Constructor Function.
@@ -16,17 +16,29 @@
 * How Object property lookup works.
 * How Object method lookup works.
 
+# Instructions
 
-## No Classes in Javascript.
+* Fork, clone your fork
+* `cd` into your local copy
+* run `npm install`
+* run `bower install`
+* run `grunt test`
+* Follow along with the README and make the tests pass.
 
-Javascript does not have classes. *At least not yet, they are coming in ECMAScript 6*.
+# Let's get started writing some javascript objects.
+
+
+## There are no classes in Javascript.
+
+Javascript does not have classes. *At least not yet, they are coming in ECMAScript 6*
 
 But, it does provide a way to create structures that behave like classes. We'll see the few ways that we can create a *"class"* in javacript.
 
 
-#### Two Ways to create a new Object
+## Javascript has objects. There are 2 ways to create a new javascript object.
 
-*js/new_object.js*
+**create a new file in app/js/new_object.js**
+You might want to write this code in it.
 
 ```javascript
 // Using an Object constructor
@@ -36,12 +48,16 @@ var newObjectFromContructor = new Object();
 var newObjectFromLiteral = {};
 ```
 
-#### Four ways that properties can be added.
+**run `grunt test` to see if the tests pass**
 
-*js/object_properties.js*
+### Objects have properties. There are 4 ways to add properties to an object.
+Properties have values. You can think of these as key:value pairs. Some languages call this a dictionary, or a hash. The basic idea is that a key is unique and it has a value.
+
+**create a new file in app/js/object_properties.js**
+You might want to write this code in it.
 
 ```javascript
-// Using an Object Literal. Preferred
+// we'll add properties to this object
 var newObjectWithProperties = {};
 
 // ECMAScript 3 compatible approaches
@@ -71,12 +87,15 @@ Object.defineProperties( newObjectWithProperties, {
   "anOldKey": { value: "Foo bar", writable: false }
 });
 ```
+**run `grunt test` to see if the tests pass**
+
+
 ## Object Literals.
 
 An Object literal is the simplest way to create an object in javacript. It looks and behaves somewhat like a Ruby hash but has some key differences.
 
-
-**Create a file js/simple_object_literals.js with the below code**
+**Create a file js/simple_object_literals.js**
+You might want to write this code in it.
 
 ```javascript
 // Create an Object literal representing one person.
@@ -89,7 +108,7 @@ var joe = {
   }
 };
 
-// OR 
+// OR
 var jill = {};
 jill.name = "Jill Smill";
 jill.age = 32;
@@ -101,6 +120,9 @@ jill.describe = function(){
 
 ```
 
+**run `grunt test` to see if the tests pass**
+
+### Summary
 An Object Literal:
 
 * Has properties.
@@ -112,11 +134,12 @@ An Object Literal:
 * By default is based on the built-in Javascript [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object).
 
 
-### Object Literals with properties that are objects.
+## Objects with properties that are objects (or nested objects)
 
 Object literals can have properties that are objects.
 
-**Create a file js/simple_object_literals_address.js and fulfill the tests**
+**Create a file js/simple_object_literals_address.js**
+You might want to write this code in it.
 
 ```javascript
 var judy = {
@@ -144,7 +167,7 @@ var jason = {
     street: '44 Warren St.',
     city: 'Stoneham',
     state: 'MA',
-    zip: 01345,
+    zip: 21144,
     display: function(){
        return this.street + ", " + this.city + ", " + this.state;
     }
@@ -154,8 +177,9 @@ var jason = {
   }
 };
 ```
+**run `grunt test` to see if the tests pass**
 
-### Objects properties and methods can change anytime.
+#### Objects properties and methods can change anytime.
 
 Here we are setting the `jason` object literal's describe property with another (different) function.
 
@@ -181,7 +205,7 @@ console.log(jason.describe(true));
 console.log(jason.describe(false));
 ```
 
-### Prototypical Inheritence
+## Prototypical Inheritence
 
 Each object will have an internal `__proto__` property that can point to another object. An Object Literal's `__proto__` property will point to the [Object.prototype](http://goo.gl/C568wU) by default.
 
@@ -198,7 +222,8 @@ For the example above:
 
 **By setting this `__proto__` property we can *simulate* object inheritance.**
 
-**Create a file js/simple_prototype.js and fulfill the tests**
+**Create a file js/simple_prototype.js**
+You might want to write this code in it.
 
 ```javascript
 // The person object inherits from the base javascript Object.prototype
@@ -228,6 +253,8 @@ jeff.__proto__ = person;
 /*  The sayHi property for jeff will be found by following jeff's __proto__ property. */
 jeff.sayHi('hello world');
 ```
+**run `grunt test` to see if the tests pass**
+
 <!-- ![Object Literal Inheritance](images/object_literal_inherit.png) -->
 
 For the example above:
@@ -247,23 +274,22 @@ Use Object literals for instances that will exist only once, or *Singletons*, in
 
 Later, we will see how to emulate a class in Javascript that will be used to create instances, or objects, of something.
 
-### Using Object Literals to create a Namespace.
+## Using Object Literals to create a Namespace.
 
-Javascript namespaces are used to disambiguate names in an application and prevent polluting the global namespace. This is so that names in an application do not conflict. Typically, name conflicts may happen when using a third-party library or plug-in, such as Bootstrap, jQuery, AngularJS, EmberJS, BackboneJS, or any other Javascript/CSS framework.
+**Create a file js/simple_namespacing.js**
+You might want to write this code in it.
 
-**Create a file js/simple_namespacing.js and fulfill the tests**
-
-*We will use namespaces later when we create objects.*
-
-**Note:**
-*The var PersonApp = PersonApp || {}; will be set in each file that uses the namespace.*
-
-*Only the first file will actually set the PersonApp to {}. The other files will just assign PersonApp to itself.*
 
 ```javascript
-// create a namespace for this PersonApp
-// If PersonApp object already exist than set it to itself.
-// Otherwise set it to an empty object literal.
+/*
+Namespacing in Javascript
+————————————————————————————————————————————————————————————————————————
+Javascript namespaces are used to disambiguate names in an application and prevent polluting the global namespace. This is so that names in an application do not conflict. Typically, name conflicts may happen when using a third-party library or plug-in, such as Bootstrap, jQuery, AngularJS, EmberJS, BackboneJS, or any other Javascript/CSS framework.
+
+create a namespace for this PersonApp
+If PersonApp object already exist than set it to itself.
+Otherwise set it to an empty object literal.
+*/
 var PersonApp = PersonApp || {};
 
 // Namespace an object literal
@@ -276,49 +302,12 @@ var joe = PersonApp.createPerson('joe', 23);
 // Namespace a Constructor Function
 PersonApp.Person = function Person(){ .. };
 var jill = new PersonApp('jill', 33);
+
+/*
+Note:
+The var PersonApp = PersonApp || {}; will be set in each file that uses the namespace. Only the first file will actually set the PersonApp to {}. The other files will just assign PersonApp to itself.
+*/
 ```
-
-## LAB
-
-Implement "Honest Tom's Used Car Lot" using object literals. **Do all your work in the cars_object_literal branch**
-
-*The cars_object_literal_done branch has a completed version of this lab if you get stuck*.
-
-* Create a couple addresses in js/addresses.js.
-	* Properties are street, city, state and country.
-	* Methods are display. This returns a string.
-* Create a couple of car makers in js/makers.js
-	* Properties are name, established date and address (use one of the addresses created above for this property).
-	* Methods are display. This returns a string.
-
-* Create a couple of cars in js/cars.js
-	* Properties are model, year, price and make (use one of the makes created above for this property).
-	* Methods are display. This returns a string.
-
-* Create One car lot in js/car_lot.js
-	* Properties are name and an array of cars.
-	* Methods are:
-		* addCar(car). This will add a car to the lot.
-		* display. This returns a string.
-		* totalValue. This return the total value of all the cars in the lot.
-
-* Log the cars in the lot to the chrome console usiing console.log.
-* Log the totalValue of all the cars in the lot to the chrome console.
-
-*Note: you will have to create a cars.html that will use each of the above js files*
-
-```html
- ...
- <body>
-      <h3>Car Lot</h3>
-      <script src='js/addresses.js'> </script>
-      <script src='js/makers.js'> </script>
-      <script src='js/cars.js'> </script>
-      <script src='js/car_lot.js'> </script>
-  </body>
- ...
-```
-
 
 ## Object Creation Patterns.
 
