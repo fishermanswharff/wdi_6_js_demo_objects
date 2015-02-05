@@ -1,25 +1,24 @@
 'use strict';
 /*  Create an object `newObjectWithProperties` by using object literal notation.
 —————————————————————————————————————————————————————————————————————————————————
-This is the preferred method of creating objects in javascript. 
+Create a new object called newObjectWithProperties.
+This is the preferred method of creating objects in javascript.
 */
 var newObjectWithProperties = {};
 
-
 /*  1 Dot syntax
 ——————————————————————————————————————————————————————
-Create a new object called newObjectWithProperties.
-Use dot syntax to create a property called someKey 
+Use dot syntax to create a property called someKey
 and set the value to "Hello World";
 This is ECMAScript 3 compatible */
 
 newObjectWithProperties.someKey = "Hello World"; // Set properties
 var someNewVariable = newObjectWithProperties.someKey; // Get properties
 
-/*  2 Square bracket syntax 
+/*  2 Square bracket syntax
 ——————————————————————————————————————————————————————
 set another key/value pair on the newObjectWithProperties by using
-the square bracket notation. The key should be "anotherKey" and the 
+the square bracket notation. The key should be "anotherKey" and the
 value should be "Hello World"
 This is ECMAScript 3 compatible
 */

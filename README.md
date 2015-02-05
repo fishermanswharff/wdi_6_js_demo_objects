@@ -41,11 +41,25 @@ But, it does provide a way to create structures that behave like classes. We'll 
 You might want to write this code in it.
 
 ```javascript
-// Using an Object constructor
+'use strict';
+
+/*    Using a Object constructor
+————————————————————————————————————————
+create a new variable 'newObjectFromContructor'
+and set its value to an empty object by using
+the contructor notation
+*/
 var newObjectFromContructor = new Object();
 
-// Using an Object Literal. Preferred
+
+/*    Using a Object Literal. Preferred
+————————————————————————————————————————
+create a new variable 'newObjectFromLiteral'
+and set its value to an empty object
+with a literal notation.
+*/
 var newObjectFromLiteral = {};
+
 ```
 
 **run `grunt test` to see if the tests pass**
@@ -57,35 +71,64 @@ Properties have values. You can think of these as key:value pairs. Some language
 You might want to write this code in it.
 
 ```javascript
-// we'll add properties to this object
+'use strict';
+/*  Create an object `newObjectWithProperties` by using object literal notation.
+—————————————————————————————————————————————————————————————————————————————————
+Create a new object called newObjectWithProperties.
+This is the preferred method of creating objects in javascript.
+*/
 var newObjectWithProperties = {};
 
-// ECMAScript 3 compatible approaches
-// 1. Dot syntax
-// Set properties
+
+/*  1 Dot syntax
+——————————————————————————————————————————————————————
+Use dot syntax to create a property called someKey
+and set the value to "Hello World";
+This is ECMAScript 3 compatible */
+
 newObjectWithProperties.someKey = "Hello World"; // Set properties
 var someNewVariable = newObjectWithProperties.someKey; // Get properties
 
-// 2. Square bracket syntax // Set properties
+/*  2 Square bracket syntax
+——————————————————————————————————————————————————————
+set another key/value pair on the newObjectWithProperties by using
+the square bracket notation. The key should be "anotherKey" and the
+value should be "Hello World"
+This is ECMAScript 3 compatible
+*/
 newObjectWithProperties["anotherKey"] = "Hello World"; // Set properties
 var anotherNewVariable = newObjectWithProperties["anotherKey"]; // Get properties
 
-// ECMAScript 5 only compatible approaches
-// 3. Object.defineProperty
-// Set properties
+
+/* ========================================
+  ECMAScript 5 only compatible approaches
+=========================================== */
+
+/*  3 Object.defineProperty
+——————————————————————————————————————————————————————
+Use the Object.defineProperty method to set a new key "oneMoreKey"
+on newObjectWithProperties. The value should be "for more control of the property's behavior"
+*/
 Object.defineProperty(newObjectWithProperties, "oneMoreKey", {
   value: "for more control of the property's behavior", writable: true,
   enumerable: true,
   configurable: true
 });
 
-// 4. Object.defineProperties // Set properties
+/*  4 Object.defineProperties
+——————————————————————————————————————————————————————
+Use the Object.defineProperties method to set new key/value
+pairs on the newObjectWithProperties object.
+set a new key "aNewKey" with value "I like turtles"
+set a new key "anOldKey" with value "Foo bar"
+*/
 Object.defineProperties( newObjectWithProperties, {
   "aNewKey": {
     value: "I like turtles", writable: true
   },
   "anOldKey": { value: "Foo bar", writable: false }
 });
+
 ```
 **run `grunt test` to see if the tests pass**
 
@@ -98,6 +141,7 @@ An Object literal is the simplest way to create an object in javacript. It looks
 You might want to write this code in it.
 
 ```javascript
+'use strict';
 // Create an Object literal representing one person.
 var joe = {
   name: "Joe Schmoe",
@@ -108,7 +152,7 @@ var joe = {
   }
 };
 
-// OR
+// OR 
 var jill = {};
 jill.name = "Jill Smill";
 jill.age = 32;
@@ -117,7 +161,6 @@ jill.age = 32;
 jill.describe = function(){
   return this.name + " is " + this.age + " years old";
 };
-
 ```
 
 **run `grunt test` to see if the tests pass**
@@ -142,6 +185,7 @@ Object literals can have properties that are objects.
 You might want to write this code in it.
 
 ```javascript
+'use strict';
 var judy = {
   name: "Judy Dench",
   age: 32
@@ -154,7 +198,7 @@ var fred = {
 /*
 Objects can have objects.
 The siblings property's value is an Array
-The address property's value is a Object literal.
+The address property's value is an Object literal.
 The describe property's value is a Function, which is also an object.
 */
 
@@ -281,10 +325,16 @@ You might want to write this code in it.
 
 
 ```javascript
+'use strict';
 /*
 Namespacing in Javascript
 ————————————————————————————————————————————————————————————————————————
-Javascript namespaces are used to disambiguate names in an application and prevent polluting the global namespace. This is so that names in an application do not conflict. Typically, name conflicts may happen when using a third-party library or plug-in, such as Bootstrap, jQuery, AngularJS, EmberJS, BackboneJS, or any other Javascript/CSS framework.
+Javascript namespaces are used to disambiguate names in an
+application and prevent polluting the global namespace.
+This is so that names in an application do not conflict.
+Typically, name conflicts may happen when using a third-party
+library or plug-in, such as Bootstrap, jQuery, AngularJS,
+EmberJS, BackboneJS, or any other Javascript/CSS framework.
 
 create a namespace for this PersonApp
 If PersonApp object already exist than set it to itself.
@@ -296,73 +346,69 @@ var PersonApp = PersonApp || {};
 PersonApp.joe = { name: 'joe', age: 23 };
 
 // Namespace a Factory
-PersonApp.createPerson = function(){ ... };
+PersonApp.createPerson = function(name,age){
+  // This method is private it is NOT exposed outside
+  // the createPerson function.
+  var display =  function(){
+    return this.name + " is " + this.age + " years old";
+  };
+  return {
+    name: name,
+    age: age,
+  };
+};
 var joe = PersonApp.createPerson('joe', 23);
 
 // Namespace a Constructor Function
-PersonApp.Person = function Person(){ .. };
-var jill = new PersonApp('jill', 33);
-
+PersonApp.Person = function Person(name, age){
+  this.name = name;
+  this.age = age;
+  return this;
+};
+var joemamma = new PersonApp.Person('joemamma', 34);
+var jasonwharff = new PersonApp.Person('jasonwharff',18);
 /*
 Note:
 The var PersonApp = PersonApp || {}; will be set in each file that uses the namespace. Only the first file will actually set the PersonApp to {}. The other files will just assign PersonApp to itself.
 */
 ```
 
+**run `grunt test` to see if the tests pass**
+
 ## Object Creation Patterns.
 
-The problem with Object Literals is that they can get very tedious. For example, if we have to create a new object literal for each Person and there are many people.
-
-Or I may want to add a property or change a method for a person then I MUST do this for every single person in the app!
+The problem with Object Literals is that they can get very tedious. For example, if we have to create a new object literal for each Person and there are many people. Or I may want to add a property or change a method for a person then I MUST do this for every single person in the app!
 
 **Use Object Literals for objects that are only created once.**
 
 Let's look at some ways we can create Objects.
 
-* Factory Pattern
-* Constructor Function
-* ECMAScript 5 Object.create
+* [Constructor Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects#Using_a_constructor_function)
+* [ECMAScript 5 Object.create](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects#Using_the_Object.create_method)
 
 
-### The Factory Pattern (optional).
+## The Constructor Function Pattern.
 
-The Factory Pattern will use a function to create object literals. The arguments to the factory function will be used to initialize and set the object being created.
+This is the most common way to create objects in Javascript. It's the most common way to implement Classes. This pattern is used with the javascript *new* keyword to create objects. Many environments, including browsers, are optimized to use this kind of constructor. The *convention* is to uppercase the first name of a function that will be used as a constructor.
 
-[Factory Pattern](FactoryPattern.md)
-
-
-## LAB
-
-Redo the Car Lot Lab above using the Factory pattern. **Do all your work in the cars_factory_pattern branch**
-
-## Demo
-
-### The Constructor Function Pattern.
-
-This is the most common way to create objects in Javascript. It's the most common way to implement Classes. This pattern is used with the javascript *new* keyword to create objects.
-
-Many environments, including browsers, are optimized to use this kind of constructor. The *convention* is to uppercase the first name of a function that will be used as a constructor.
-
-
-**Create a file js/constructor_function.js with the below code and reference it from index.html.**
-
+**Create a file js/constructor_function.js**
+You might want to write this code in it.
 
 ```javascript
-debugger;
 
-// Constructor Function object creation
-// Constructor function is camel cased by convention.
-var Person = function(name, age){
-  // When new Person(...) is invoked
+'use strict';
+/*
+1. Define the object type by writing a constructor function. There is a strong convention, with good reason, to use a capital initial letter.
+2. Create an instance of the object with new.
+*/
+var PersonConstructor = function(name, age, sex){
+  // When new PersonConstructor(...) is invoked
   // this = {};
   // this.__proto_ = Person.prototype
-  debugger;
 
   this.name = name;
   this.age = age;
-
-  // return the this pointer
-  // return this;
+  this.sex = sex;
 };
 
 Person.prototype = {
@@ -371,18 +417,18 @@ Person.prototype = {
    }
 };
 
-var joe = new Person('joe', 23),
-  jill = new Person('jill', 32);
-
-console.log(joe.describe());
-console.log(jill.describe());
+var ozamataz = new PersonContructor('Ozamataz Buckshank', 23, male);
+var beezer = new PersonConstructor('Beezer Twelve Washingbeard', 19, male);
 ```
+
+**run `grunt test` to see if the tests pass**
 
 **BIG NOTE:** The *`__proto__`* property is NOT the same as the *`prototype`* property.
 The `__proto__` property is **ONLY** used for object property lookup.
 The `Function.prototype` property will only exist for functions.
 
-##### Property Lookup and the Prototype.
+
+### Property Lookup and the Prototype.
 
 Whats happening when we call joe.describe().
 
