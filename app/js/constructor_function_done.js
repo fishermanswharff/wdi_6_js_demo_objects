@@ -1,6 +1,4 @@
-'use strict';
-
-
+/*
 // Constructor Function object creation
 // Constructor function is camel cased by convention. 
 var Person = function(name, age){
@@ -55,3 +53,4 @@ var joe = new Person('joe', 23),
 //console.log(jill.describe());
 // Same as above
 
+*/
