@@ -8,7 +8,6 @@
 
 * Learn about the most common ways to create Javascript Objects and object properties.
 	* Object Literal.
-	* Factory Pattern.
 	* Constructor Function.
 	* ECMAScript 5 Object.create
 * Use Javascript Namespaces.
