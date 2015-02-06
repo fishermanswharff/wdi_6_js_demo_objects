@@ -50,15 +50,16 @@ var mbp = new Computer('MacBookPro', '15inch Retina', beezer, 'Mean Silver Machi
 /* You can then access the property: */
 mbp.owner.name
 
-/*  You can also assign prototypes to an object.
-This will allow all instances of a Person to use 
+/*  You can also assign prototypes functions.
+This will allow all instances of a Person to use
 the describe method. This will point ozamataz and beezer's
 __proto__ to this object literal */
-Person.prototype = {
-  describe: function(){
-    return this.name + ' identifies as ' + this.sex + ' and is ' + this.age + ' years old.';
-  }
+Person.prototype.describe = function(){
+  return this.name + ' identifies as ' + this.sex + ' and is ' + this.age + ' years old.';
 };
+
+// console.log(beezer.__proto__);
+// console.log(beezer.describe());
 
 /*  BIG NOTE
 ————————————————————————————————————————

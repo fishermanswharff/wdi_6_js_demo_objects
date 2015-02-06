@@ -426,8 +426,8 @@ var Person = function(name, age, sex){
 
 /*  You instantiate new objects from constructors with
 the 'new' syntax, like so:  */
-var ozamataz = new Person('Ozamataz Buckshank', 23, male);
-var beezer = new Person('Beezer Twelve Washingbeard', 19, male);
+var ozamataz = new Person('Ozamataz Buckshank', 23, 'male');
+var beezer = new Person('Beezer Twelve Washingbeard', 19, 'male');
 
 /*  These statements create ozamataz and beezer objects
 and assign the specified values for its properties.
@@ -447,15 +447,16 @@ var mbp = new Computer('MacBookPro', '15inch Retina', beezer, 'Mean Silver Machi
 /* You can then access the property: */
 mbp.owner.name
 
-/*  You can also assign prototypes to an object.
-This will allow all instances of a Person to use 
+/*  You can also assign prototypes functions.
+This will allow all instances of a Person to use
 the describe method. This will point ozamataz and beezer's
 __proto__ to this object literal */
-Person.prototype = {
-  describe: function(){
-    return this.name + ' identifies as ' + this.sex + ' and is ' + this.age + ' years old.';
-  }
+Person.prototype.describe = function(){
+  return this.name + ' identifies as ' + this.sex + ' and is ' + this.age + ' years old.';
 };
+
+// console.log(beezer.__proto__);
+// console.log(beezer.describe());
 
 /*  BIG NOTE
 ————————————————————————————————————————
@@ -467,38 +468,79 @@ The Function.prototype property will only exist for functions.
 
 **run `grunt test` to see if the tests pass**
 
-**BIG NOTE:** The *`__proto__`* property is NOT the same as the *`prototype`* property.
-The `__proto__` property is **ONLY** used for object property lookup.
-The `Function.prototype` property will only exist for functions.
-
-
 ### Property Lookup and the Prototype.
 
-Whats happening when we call joe.describe().
+Whats happening when we call `ozamataz.describe()`?
 
 For the example above:
-* When one calls joe.describe();
-* js will look for the property describe in the joe object literal.
-* It will not be found.
-* js will look for the property describe in the object pointed to by `joe.__proto__`. This is the Person.prototype object.
-* js will find the describe method on the Person.prototype object and execute it.
 
+* When you call `ozamataz.describe()` JS will look for the property `describe` in the `ozamataz` object literal.
+* It will not be found.
+* JS will look for the property `describe` in the object pointed to by `ozamataz.__proto__`. This is the `Person.prototype` object.
+* JS will find the describe method on the `Person.prototype` object and execute it.
 
 ![Constructor function](images/constructor_function1.png)
-
 
 **Run the above code and look at the Person.prototype and object `__proto__`properties.**
 
 
-## LAB
-Redo the Car Lot Lab above using Constructor Functions. **Do all your work in the cars_constructor_function branch.**
+## Using the Object.create method
 
-## Demo
-### Object.create (optional)
+Objects can also be created using the `Object.create` method. This method can be very useful, because it allows you to choose the prototype object for the object you want to create, without having to define a constructor function. For more detailed information on the method and how to use it, see [Object.create](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create) method.
 
-ECMAScript 5 defined a new way to create an object. Object.create(...).
+**Create a file js/object_create.js**
+You might want to write this code in it.
 
-You will be seeing this more as time goes on and developers make use of this. For now, we will be using the Constructor Function to create objects.
+```javascript
+'use strict';
+
+/*  Animal properties and method encapsulation  */
+var Animal = {
+  type: "Invertebrates", // Default value of properties
+  displayType : function(){  // Method which will display type of Animal
+    console.log(this.type);
+    return this.type;
+  }
+}
+
+/*  Create new animal type called animal1 */
+var animal1 = Object.create(Animal);
+// animal1.displayType(); // Output:Invertebrates
+
+/*  Create new animal type called Fishes  */
+var fish = Object.create(Animal);
+fish.type = "Fishes";
+// fish.displayType(); // Output:Fishes
+
+/*  Human properties and method encapsulation   */
+var HumanBeing = {
+    numOfLegs: 2,
+    canSpeak: true,
+    hasBrain: true,
+    talk: function(msg){
+      if(this.canSpeak && this.hasBrain) return this.name + ' said ' + msg + ' when he/she turned ' + this.age;
+    }
+};
+
+/* Use Object.create() to create a new object
+based on the person object literal */
+var sue = Object.create(HumanBeing, {name: {value: "Susan"}, age: {value: '34'} });
+
+/*
+console.log(sue.name + " has " + sue.numOfLegs + " legs ");
+console.log(sue.said('oh no!!!'));
+
+// Look at sue in chrome inspector
+console.log(sue.__proto__);  // person object literal defined above
+
+console.log(sue.hasOwnProperty('name')); // true
+console.log(sue.__proto__.hasOwnProperty('name')); // false
+
+console.log(sue.hasOwnProperty('numOfLegs')); // false
+console.log(sue.__proto__.hasOwnProperty('numOfLegs')); // true
+*/
+```
+
 
 [Object.create](ObjectCreate.md)
 
@@ -535,35 +577,3 @@ Chapter 6.
 * Most prevalant way to create objects is with the 'new' keyword and Constructor Functions.
 * Learn about Prototypes and Prototypical Inheritance.
 * Learn about property and method lookup.
-
-
-
-```javascript
-/*
-describe('',function(){
-  it('',function(){
-    expect().toEqual();
-  });
-});
-*/
-
-/*
-Expectations/Matchers
-————————————————————
-expect().toBe();
-expect().not.toBe();
-expect().toMatch(//);
-expect().toBeDefined();
-expect().toBeUndefined();
-expect().not.toBeUndefined();
-expect().toBeNull();
-expect().toBeTruthy();
-expect().toBeFalsy();
-expect().toContain("");
-expect().toBeLessThan();
-expect().toBeGreaterThan();
-expect(pi).toBeCloseTo(e, 2);
-expect().toThrow();
-*/
-
-```
